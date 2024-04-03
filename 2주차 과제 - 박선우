@@ -1,0 +1,304 @@
+import 'package:flutter/cupertino.dart';
+
+const double meetingHeight = 70;
+const double meetingWidth = 70;
+
+Future<void> alertDeveloping(BuildContext context){
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("개발중"),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0)),
+          content: Text('개발중'),
+          actions: [
+            Center(
+              child: TextButton(
+                child: Text("닫기"),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ),
+          ],
+        );
+      },
+    );
+}
+
+class CarrotMarket extends StatelessWidget {
+  const CarrotMarket({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home : Scaffold(
+        appBar: AppBar(
+            title: Row(
+              children: [
+                Text("서초동",
+                    style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)
+                ),
+                Icon(Icons.expand_more,color:Colors.black,size: 30,)
+              ],
+            ),
+            actions:[
+              IconButton(onPressed: (){}, icon: Icon(Icons.account_circle_outlined),color:Colors.black),
+              IconButton(onPressed: (){}, icon: Icon(Icons.search),color:Colors.black),
+              IconButton(onPressed: (){}, icon: Icon(Icons.notifications_none_outlined),color:Colors.black),
+            ]
+        ),
+        body: ListView(
+                padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                children: <Widget> [
+                  Container(
+                      padding: EdgeInsets.fromLTRB(10,20,10,15),
+                      child:Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        //mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Container(
+                              width:120,
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children:[
+                                    InkWell(
+                                      onTap: (){
+                                        print("Hello");
+                                        alertDeveloping(context);
+                                      },
+                                      child: Image.asset("assets/people.jpg",width:meetingWidth,height: meetingHeight),
+                                    ),
+                                    SizedBox(height:10),
+                                    Text('모임 둘러보기',style:TextStyle(fontSize:17, color:Colors.black),),
+                                  ]
+                              )
+                          ),
+                          SizedBox(
+                            height: 100,
+                            width: 40,
+                            child:VerticalDivider(thickness: 1, color: Colors.black12,),
+                          ),
+                          Container(
+                              width:140,
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children:[
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      child: Image.asset("assets/running.jpg",width:meetingWidth,height:meetingHeight,fit: BoxFit.fitHeight),
+                                    ),
+                                    SizedBox(height:10),
+                                    Text('오늘도 같이\n달려요',style:TextStyle(fontSize:17, color:Colors.black),textAlign: TextAlign.center,),
+                                  ]
+                              )
+                          ),
+                          Container(
+                              width:140,
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children:[
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      child: Image.asset("assets/basketball.jpg",width:meetingWidth,height:meetingHeight,fit: BoxFit.fitHeight),
+                                    ),
+                                    SizedBox(height:10),
+                                    Text('농구할 사람~',style:TextStyle(fontSize:17, color:Colors.black),),
+                                  ]
+                              )
+                          ),
+                          Container(
+                              width:140,
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children:[
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      child: Image.asset("assets/library.jpg",width:meetingWidth,height:meetingHeight,fit: BoxFit.fitHeight),
+                                    ),
+                                    SizedBox(height:10),
+                                    Text('왜 시험기간이죠..\n말도 안됨',style:TextStyle(fontSize:17, color:Colors.black),textAlign: TextAlign.center,),
+                                  ]
+                              )
+                          ),
+                        ],
+                      )
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child:Divider(thickness: 1, color: Colors.black12,),
+                  ),
+                  // 상품 컨테이너
+                  Container(
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children:[
+                            InkWell(
+                              onTap:(){
+                                alertDeveloping(context);
+                              },
+                              child: Container(
+                                  padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                                  child:Row(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children:[
+                                        Container( // 제목
+                                            child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children:[
+                                                  Text('동네맛집',style:TextStyle(color:Colors.black,fontSize:15,backgroundColor: Colors.black12)),
+                                                  Text('강남역 자취 17년차의 맛집 리스트',style:TextStyle(fontSize:25)),
+                                                  Text('저만 알고 싶은 맛집 리스트 공유해요!',style:TextStyle(fontSize:20,color:Colors.grey)),
+                                                  SizedBox(height:5,),
+                                                  Text('역삼동 • 2분전 • 조회 87',style:TextStyle(fontSize:17,color:Colors.grey)),
+                                                ]
+                                            )
+                                        ),
+                                        Container( // 사진
+                                            padding: EdgeInsets.only(left:130),
+                                            child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                children:[
+                                                  ClipRRect(
+                                                    borderRadius: BorderRadius.circular(10.0),
+                                                    child: Image.asset("assets/ramen.jpg",width:100,height:100,fit: BoxFit.fitHeight),
+                                                  ),
+                                                  SizedBox(height:7.5),
+                                                  Row(
+                                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                                    children:[
+                                                      Icon(Icons.favorite_border_outlined),
+                                                      Text(' 3  '),
+                                                      Icon(Icons.comment_outlined),
+                                                      Text(' 87'),
+                                                    ],
+                                                  )
+                                                ]
+                                            )
+                                        )
+                                      ]
+                                  )
+                              ),//
+                            ),// 목록 1개
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              child:Divider(thickness: 1, color: Colors.black12,),
+                            ),
+                            Container(
+                                padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                                child:Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children:[
+                                      Container( // 제목
+                                          child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children:[
+                                                Text('모임',style:TextStyle(color:Colors.black,fontSize:15,backgroundColor: Colors.black12)),
+                                                Text('이번주 클라이밍 하러 가실 분',style:TextStyle(fontSize:25)),
+                                                Text('토요일 저녁에 도장깨기 하러가요. 초보자 환영',style:TextStyle(fontSize:20,color:Colors.grey)),
+                                                SizedBox(height:5,),
+                                                Text('역삼동 • 5분전 • 조회 27',style:TextStyle(fontSize:17,color:Colors.grey)),
+                                              ]
+                                          )
+                                      ),
+                                      Container( // 사진
+                                          padding: EdgeInsets.only(left:100),
+                                          child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              children:[
+                                                ClipRRect(
+                                                  borderRadius: BorderRadius.circular(10.0),
+                                                  child: Image.asset("assets/climbing.jpg",width:100,height:100,fit: BoxFit.fitHeight),
+                                                ),
+                                                SizedBox(height:7.5),
+                                                Row(
+                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                  children:[
+                                                    Icon(Icons.people_outlined),
+                                                    Text(' 3 / 6 명'),
+                                                  ],
+                                                )
+                                              ]
+                                          )
+                                      )
+                                    ]
+                                )
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              child:Divider(thickness: 1, color: Colors.black12,),
+                            ),
+                            Container(
+                                padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
+                                child:Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children:[
+                                      Container( // 사진
+                                          child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.center,
+                                              children:[
+                                                ClipRRect(
+                                                  borderRadius: BorderRadius.circular(10.0),
+                                                  child: Image.asset("assets/officetel.jpg",width:100,height:100,fit: BoxFit.fitWidth),
+                                                ),
+                                                SizedBox(height:7.5),
+                                                Row(
+                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                  children:[
+                                                    Icon(Icons.people_outlined),
+                                                    Text('0 / 1 명'),
+                                                  ],
+                                                )
+                                              ]
+                                          )
+                                      ),
+                                      Container( // 제목
+                                          padding: EdgeInsets.only(left:100),
+                                          child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children:[
+                                                //Text('모임',style:TextStyle(color:Colors.black,fontSize:15,backgroundColor: Colors.black12)),
+                                                Text('입주 청소 알바 구해요',style:TextStyle(fontSize:25)),
+                                                Text('우리동네가게 • 당근알바',style:TextStyle(fontSize:20,color:Colors.grey)),
+                                                SizedBox(height:5,),
+                                                Text('역삼동 • 7분전 • 조회 15',style:TextStyle(fontSize:17,color:Colors.grey)),
+                                              ]
+                                          )
+                                      ),
+                                    ]
+                                )
+                            )
+                          ]
+                      )
+
+                  )
+                ]
+              ),
+        bottomNavigationBar: BottomAppBar(
+          height: 50,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children:[
+              IconButton(onPressed: (){}, icon:Icon(Icons.home_outlined),),
+              IconButton(onPressed: (){}, icon:Icon(Icons.description_outlined),),
+              IconButton(onPressed: (){}, icon:Icon(Icons.location_on_outlined),),
+              IconButton(onPressed: (){}, icon:Icon(Icons.question_answer_outlined),),
+              IconButton(onPressed: (){}, icon:Icon(Icons.account_circle_outlined),),
+            ],
+          )
+        ),
+        floatingActionButton: FloatingActionButton(onPressed: (){},
+          backgroundColor: Colors.orange,
+          shape: CircleBorder(),
+          child: Icon(Icons.add, size:30,color:Colors.white,),
+        ),
+      )
+    );
+    return const Placeholder();
+  }
+}
+
+void main(){
+  runApp(CarrotMarket());
+}
